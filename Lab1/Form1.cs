@@ -479,15 +479,6 @@ namespace Lab1
                 str[i] = str[i].Replace(";", " ;");
 
 
-                // for (int m = 0; m < MathSym.Length; m++)
-
-                //{
-
-                //  repl = " " + MathSym[m] + " ";
-
-                //str[i] = str[i].Replace(MathSym[m], repl);
-
-                //} 
 
                 for (int m = 0; m < NoName.Length; m++)
 
@@ -512,15 +503,7 @@ namespace Lab1
 
                     {
 
-                       /* if (sub.Contains(NoName[c]))
-
-                        {
-
-                            Results.Text += "ОМГ \r\n";
-                            step = step + (sub.IndexOf(NoName[c], 0) + 1);
-                            sub = sub.Substring(sub.IndexOf(NoName[c], space_way) + 1);
-
-                        } */
+                      
                     }
 
                     if (sub.Contains(" "))
@@ -557,8 +540,7 @@ namespace Lab1
                     else if (words[j][0] == '"' && words[j][words[j].Length - 1] == '"')
 
                     {
-                        //if (words[j][words[j].Length - 1] == '"')
-
+                        
                         Results.Text += " 11 - строка - " + words[j] + " - с " + ((str[i].IndexOf(words[j], way)) -2) + " по " + ((str[i].IndexOf(words[j], way) + (words[j].Length - 1))-2) + " символ " + "\r\n";
 
                     }
@@ -642,17 +624,7 @@ namespace Lab1
                             Results.Text += " Error недопустимый символ в названии переменной " + "\r\n";
                         }
 
-                       /* if (sub.Contains(" "))
-
-                        {
-
-                            Results.Text += " 9 - разделитель - c " + ((sub.IndexOf(" ", 0)) + step) + " по " + ((sub.IndexOf(" ", 0)) + step) + " символ " + "\r\n";
-
-                            step = step + (sub.IndexOf(" ", 0) + 1);
-                            sub = sub.Substring(sub.IndexOf(" ", space_way) + 1);
-
-
-                        } */
+                      
 
                     }
                    
