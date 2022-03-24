@@ -451,9 +451,9 @@ namespace Lab1
 
             string[] str = Code.Text.Split(new char[] { '\n' });
 
-            string[] MathSym = { "/", "(", ")", "-", "+", "*", "="};
+            string[] MathSym = { "/","-", "+", "*", "="};
 
-            string[] NoName = { ":", "?", ".", ",", "{", "}", "[", "]", ";"};
+            string[] NoName = { ":", "?","{", "}", "[", "]"};
 
             string[] TypeData = { "int", "boolean", "char", "String", "true", "false", "double" };
 
@@ -479,17 +479,27 @@ namespace Lab1
                 str[i] = str[i].Replace(";", " ;");
 
 
-               for (int m = 0; m < MathSym.Length; m++)
+                // for (int m = 0; m < MathSym.Length; m++)
 
-                {
+                //{
 
-                    repl = " " + MathSym[m] + " ";
+                //  repl = " " + MathSym[m] + " ";
 
-                    str[i] = str[i].Replace(MathSym[m], repl);
+                //str[i] = str[i].Replace(MathSym[m], repl);
 
-                } 
+                //} 
 
-                Results.Text += " Строка " + i + "\r\n";
+                for (int m = 0; m < NoName.Length; m++)
+
+                    {
+
+                     repl = " ";
+
+                    str[i] = str[i].Replace(NoName[m], repl);
+
+                    } 
+
+                    Results.Text += " Строка " + i + "\r\n";
 
                 string[] words = str[i].Split(new char[] { ' ' });
 
@@ -498,6 +508,32 @@ namespace Lab1
                 for (int j = 0; j < words.Length; j++)
 
                 {
+                    for (int c = 0; c < NoName.Length; c++)
+
+                    {
+
+                       /* if (sub.Contains(NoName[c]))
+
+                        {
+
+                            Results.Text += "ОМГ \r\n";
+                            step = step + (sub.IndexOf(NoName[c], 0) + 1);
+                            sub = sub.Substring(sub.IndexOf(NoName[c], space_way) + 1);
+
+                        } */
+                    }
+
+                    if (sub.Contains(" "))
+
+                    {
+
+                        Results.Text += " 9 - разделитель - c " + ((sub.IndexOf(" ", 0)) + step) + " по " + ((sub.IndexOf(" ", 0)) + step) + " символ " + "\r\n";
+
+                        step = step + (sub.IndexOf(" ", 0) + 1);
+                        sub = sub.Substring(sub.IndexOf(" ", space_way) + 1);
+
+
+                    }
 
                     if (TypeData.Contains(words[j]))
 
@@ -512,16 +548,16 @@ namespace Lab1
 
                     else if( words[j].Contains('=') == true )
                     {
-                        Results.Text += " 10 - оператор присваивания - " + words[j] + " - с " + (str[i].IndexOf((words[j]), way) - 1) + " по " + (str[i].IndexOf(words[j], way) - 1) + " символ " + "\r\n";
+                        Results.Text += " 10 - оператор присваивания - " + words[j] + " - с " + (str[i].IndexOf((words[j]), way)) + " по " + (str[i].IndexOf(words[j], way)) + " символ " + "\r\n";
 
                     }
 
                  
                  
-                    else if (words[j][0] == '"')
+                    else if (words[j][0] == '"' && words[j][words[j].Length - 1] == '"')
 
                     {
-                        if (words[j][words[j].Length - 1] == '"')
+                        //if (words[j][words[j].Length - 1] == '"')
 
                         Results.Text += " 11 - строка - " + words[j] + " - с " + ((str[i].IndexOf(words[j], way)) -2) + " по " + ((str[i].IndexOf(words[j], way) + (words[j].Length - 1))-2) + " символ " + "\r\n";
 
@@ -606,7 +642,7 @@ namespace Lab1
                             Results.Text += " Error недопустимый символ в названии переменной " + "\r\n";
                         }
 
-                        if (sub.Contains(" "))
+                       /* if (sub.Contains(" "))
 
                         {
 
@@ -616,11 +652,11 @@ namespace Lab1
                             sub = sub.Substring(sub.IndexOf(" ", space_way) + 1);
 
 
-                        } 
+                        } */
 
                     }
                    
-                    way = way + System.Convert.ToInt32(words[j].Length);
+                    way = way + System.Convert.ToInt32(words[j].Length) +1;
                    
 
 
